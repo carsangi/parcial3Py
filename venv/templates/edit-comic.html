@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="card card-body">
+
+    <form action="/update_comic/{{comic.0}}" method="POST">
+        <input type="text" name="nombre" placeholder="Nombre" value="{{comic.1}}">
+        <input type="text" name="autor" placeholder="Autor" value="{{comic.2}}">
+        <input type="text" name="numero" placeholder="Numero" value="{{comic.3}}">
+        <button type="submit"class="btn btn-danger btn-delete">
+            Editar
+        </button>
+    </form>
+</div>
+
+{% endblock %}

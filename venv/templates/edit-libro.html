@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="card card-body">
+
+    <form action="/update_libro/{{libro.0}}" method="POST">
+        <input type="text" name="nombre" placeholder="Nombre" value="{{libro.1}}">
+        <input type="text" name="autor" placeholder="Autor" value="{{libro.2}}">
+        <input type="text" name="editorial" placeholder="Editorial" value="{{libro.3}}">
+        <button type="submit"class="btn btn-danger btn-delete">
+            Editar
+        </button>
+    </form>
+</div>
+
+{% endblock %}

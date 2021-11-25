@@ -1,0 +1,163 @@
+{% extends "layout.html" %}
+{% block body %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="row mt-3">
+    <div class="col-5">
+        <div class="card card-body">
+            <form action="/add_libro" method="POST">
+                <div>
+                    <caption>Libros</caption>
+                </div>
+                <div>
+                    <div class="form-control">
+                        <input type="text" name="nombre" placeholder="Nombre">
+                        <input type="text" name="autor" placeholder="Autor">
+                        <input type="text" name="editorial" placeholder="Editorial">
+                    </div>
+                    <div style: center>
+                        <button type="submit" class="btn btn-danger btn-delete">
+                            Guardar
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-7">
+        <table class="table">
+            <thead>
+            Libros
+            <tr>
+                <td>Id</td>
+                <td>Nombre</td>
+                <td>Autor</td>
+                <td>Editorial</td>
+                <td>Operaciones</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for libro in libros %}
+            <tr>
+                <td>{{libro.0}}</td>
+                <td>{{libro.1}}</td>
+                <td>{{libro.2}}</td>
+                <td>{{libro.3}}</td>
+                <td>
+                    <a href="/edit_libro/{{libro.0}}" class="btn btn-secondary">edit</a>
+                    <a href="/delete_libro/{{libro.0}}" class="btn btn-danger btn-delete">delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-5">
+        <div class="card card-body">
+            <form action="/add_revista" method="POST">
+                <div>
+                    <caption>Revistas</caption>
+                </div>
+                <div>
+                    <div class="form-control">
+                        <input type="text" name="nombre" placeholder="Nombre">
+                        <input type="text" name="autor" placeholder="Autor">
+                        <input type="text" name="edicion" placeholder="Edicion">
+                    </div>
+                    <button type="submit" class="btn btn-danger btn-delete">
+                        Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-7">
+        <table class="table">
+            <thead>
+            Revistas
+            <tr>
+                <td>Id</td>
+                <td>Nombre</td>
+                <td>Autor</td>
+                <td>Edicion</td>
+                <td>Operaciones</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for revista in revistas %}
+            <tr>
+                <td>{{revista.0}}</td>
+                <td>{{revista.1}}</td>
+                <td>{{revista.2}}</td>
+                <td>{{revista.3}}</td>
+                <td>
+                    <a href="/edit_revista/{{revista.0}}" class="btn btn-secondary">edit</a>
+                    <a href="/delete_revista/{{revista.0}}" class="btn btn-danger btn-delete">delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-5">
+        <div class="card card-body">
+            <form action="/add_comic" method="POST">
+                <div>
+                    <caption>Comics</caption>
+                </div>
+                <div>
+                    <div class="form-control">
+                        <input type="text" name="nombre" placeholder="Nombre">
+                        <input type="text" name="autor" placeholder="Autor">
+                        <input type="text" name="numero" placeholder="Numero">
+                    </div>
+                    <button type="submit" class="btn btn-danger btn-delete">
+                        Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-7">
+        <table class="table">
+            <thead> Comic
+            <tr>
+                <td>Id</td>
+                <td>Nombre</td>
+                <td>Autor</td>
+                <td>Numero</td>
+                <td>Operaciones</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for comic in comics %}
+            <tr>
+                <td>{{comic.0}}</td>
+                <td>{{comic.1}}</td>
+                <td>{{comic.2}}</td>
+                <td>{{comic.3}}</td>
+                <td>
+                    <a href="/edit_comic/{{comic.0}}" class="btn btn-secondary">edit</a>
+                    <a href="/delete_comic/{{comic.0}}" class="btn btn-danger btn-delete">delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
